@@ -1,11 +1,10 @@
+# nginx-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
-  labels:
-    app: nginx
+  name: nginx-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
@@ -15,7 +14,8 @@ spec:
         app: nginx
     spec:
       containers:
-        - name: nginx
-          image: nginx:latest
-          # Add configuration, ports, volumes, etc., as needed
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
 
